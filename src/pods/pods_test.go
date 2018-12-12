@@ -22,10 +22,11 @@ import (
 
 	"io/ioutil"
 
+	"rules"
+
 	"github.com/ghodss/yaml"
 	"github.com/olekukonko/tablewriter"
-	"github.com/viglesiasce/kube-lint/pkg/rules"
-	"k8s.io/client-go/pkg/api/v1"
+	v1 "k8s.io/api/core/v1"
 )
 
 func TestGetPodsFromServer(t *testing.T) {
@@ -81,7 +82,7 @@ func TestCreateTable(t *testing.T) {
 		name string
 		want *tablewriter.Table
 	}{
-	// TODO: Add test cases.
+		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
 		if got := CreateTable(); !reflect.DeepEqual(got, tt.want) {
@@ -101,7 +102,7 @@ func TestEvaluateRules(t *testing.T) {
 		name string
 		args args
 	}{
-	// TODO: Add test cases.
+		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
 		EvaluateRules(tt.args.config, tt.args.pods, tt.args.tags, tt.args.showAll)

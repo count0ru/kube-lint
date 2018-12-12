@@ -14,9 +14,11 @@
 
 package main
 
-import "cmdd"
+import (
+	"command"
+)
 
 func main() {
 
-	cmdd.Execute()
+	command.Execute()
 }

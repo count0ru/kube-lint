@@ -16,15 +16,16 @@ package pods
 
 import (
 	"encoding/json"
-	"io/ioutil"
-	"os"
 	"github.com/fatih/color"
 	"github.com/ghodss/yaml"
 	"github.com/olekukonko/tablewriter"
-	"rules"
+	"io/ioutil"
 	v1 "k8s.io/api/core/v1"
-	"k8s.io/client-go/tools/clientcmd"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/tools/clientcmd"
+	"os"
+	"rules"
 )
 
 type PodList interface {
@@ -49,7 +50,7 @@ func (ks KubeServer) GetPods(namespace string) []v1.Pod {
 		panic(err.Error())
 	}
 
-	pods, err := clientset.CoreV1().Pods(namespace).List(v1.ListOptions{})
+	pods, err := clientset.CoreV1().Pods(namespace).List(metav1.ListOptions{})
 	if err != nil {
 		panic(err.Error())
 	}
